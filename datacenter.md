@@ -17,3 +17,6 @@ Under the Paris Agreement, India has a goal to generate at least 40% of its powe
 <https://www.reuters.com/article/us-india-electric-policy/india-approves-14-billion-electric-vehicle-incentive-scheme-idUSKCN1QH29F>
 
 ## E.Datacenter.8
+
+#### Sources
+<https://www.datacenterknowledge.com/microsoft/azure-outage-proves-hard-way-availability-zones-are-good-idea>
