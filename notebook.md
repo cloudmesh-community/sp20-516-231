@@ -14,6 +14,7 @@ the last activities first (e.g. in reverse cronological order by week)
 * installed multipass
 * worked on multipass windows installation instructions
 * read datacenter chapter
+* started datacenter exercises
 
 ## Week Fri 01/10/20 - 01/17/20
 * filled out class form
