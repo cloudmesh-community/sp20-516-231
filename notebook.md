@@ -4,10 +4,8 @@ Please make sure you update it every week even if you have no time to work on
 anything. You can surely spend 2 minutes to update this document. Please put 
 the last activities first (e.g. in reverse cronological order by week)
 
-## Week Fri 01/10/20 - 01/17/20
-* filled out class form
-* filled out zoom poll
-* submitted bio on piazza
+## Week Fri 01/24/20-01/31/20
+
 
 ## Week Fri 01/17/20-01/24/20
 * installed python.org 3.8.1
@@ -17,5 +15,8 @@ the last activities first (e.g. in reverse cronological order by week)
 * worked on multipass windows installation instructions
 * read datacenter chapter
 
-## Week Fri 01/24/20-01/31/20
-* :o2: N/A
+## Week Fri 01/10/20 - 01/17/20
+* filled out class form
+* filled out zoom poll
+* submitted bio on piazza
+
