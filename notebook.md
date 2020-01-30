@@ -5,7 +5,7 @@ anything. You can surely spend 2 minutes to update this document. Please put
 the last activities first (e.g. in reverse cronological order by week)
 
 ## Week Fri 01/24/20-01/31/20
-
+* finished datacenter exercises
 
 ## Week Fri 01/17/20-01/24/20
 * installed python.org 3.8.1
