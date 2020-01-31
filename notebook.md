@@ -6,6 +6,8 @@ the last activities first (e.g. in reverse cronological order by week)
 
 ## Week Fri 01/24/20-01/31/20
 * finished datacenter exercises
+* Why do we need to use a python virtual environment?
+  * Different projects may require specific versions of python modules. Operating in a virtual environment ensures that upgrades to modules in one environment do not cause unintended behaviors in other environments.
 
 ## Week Fri 01/17/20-01/24/20
 * installed python.org 3.8.1
