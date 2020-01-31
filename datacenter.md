@@ -17,6 +17,10 @@ Under the Paris Agreement, India has a goal to generate at least 40% of its powe
 <https://www.reuters.com/article/us-india-electric-policy/india-approves-14-billion-electric-vehicle-incentive-scheme-idUSKCN1QH29F>
 
 ## E.Datacenter.8
-
+In September 2018, lightning strikes interefered with a Microsoft data center in San Antonio, Texas, causing equipment to shut down and leading to an outage of Azure DevOps services. The outage affected 40 Azure services for the entire South Central US region and lasted over a day. Because Microsoft did not yet have Availability Zones in place in the South Central US region, there were no other data centers users could access during the outage.
 #### Sources
 <https://www.datacenterknowledge.com/microsoft/azure-outage-proves-hard-way-availability-zones-are-good-idea>
+
+<https://www.datacenterknowledge.com/uptime/microsoft-blames-severe-weather-azure-cloud-outage>
+
+<https://devblogs.microsoft.com/devopsservice/?p=17485
