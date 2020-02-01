@@ -9,9 +9,9 @@ Filtering is the process by which `kube-scheduler` determines whether each Node 
 * Whether each noe can mount the Volumes requested by the Pod
 ### 1.1.2 Scoring
 Scoring is the process by which `kube-scheduler` selects one Node from a list of feasible Nodes. Scoring factors include:
-* Whether a node has cached the image(s) needed to host the Pod. This means the node will not have to download the image(s) and may be able to start the Pod faster.
-* Whether a node is hosting Pods that are part of the same Service as the Pod being scheduled. It may be preferable to spread a Service's Pods across multiple Nodes to make it more resilient to Node failure.
-* 
+* Whether a node has cached the image(s) needed to host the Pod. This means the Node will not have to download the image(s) and may be able to start the Pod faster.
+* Whether a node is hosting Pods that are part of the same Service as the Pod being scheduled. It may be preferable to spread a Service's Pods across multiple Nodes to make it more resilient to the failure of a single Node.
+* The number of Pods and allocated resources on a Node. It may be preferable to select relatively empty nodes, but on the other hand, selecting nearly more full nodes could allow a set of Services to run on as few Nodes as possible, which could save money.
 ## 1.2 Example
 
 
