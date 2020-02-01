@@ -13,7 +13,9 @@ Scoring is the process by which `kube-scheduler` selects one Node from a list of
 * Whether a node is hosting Pods that are part of the same Service as the Pod being scheduled. It may be preferable to spread a Service's Pods across multiple Nodes to make it more resilient to the failure of a single Node.
 * The number of Pods and allocated resources on a Node. It may be preferable to select relatively empty nodes, but on the other hand, selecting nearly more full nodes could allow a set of Services to run on as few Nodes as possible, which could save money.
 ## 1.2 Example
+idea - set up a custom scheduler for certain pods
 
+rationale - can contain some rules for pods that you only have to define once and then send pods to the scheduler instead of copy-pasting whatever affinity rule to each pod
 
 
 ## Sources
@@ -29,3 +31,6 @@ https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler
 
 https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 
+https://developer.ibm.com/technologies/containers/articles/creating-a-custom-kube-scheduler/
+
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
