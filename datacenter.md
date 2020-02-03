@@ -1,4 +1,7 @@
-# Brian Kegerreis sp20-516-231
+# Datacenter Brian Kegerreis sp20-516-231
+
+:o2: attending markdown session mandatory
+
 ## E.Datacenter.4
 ### Wind energy
 Wind energy uses wind turbines to generate power. 
