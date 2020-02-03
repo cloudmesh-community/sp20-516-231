@@ -1,6 +1,6 @@
 # 1 Kubernetes Scheduler
 
-:o2: please learn markdone
+:o2: please learn markdown
 
 :o2: use empty ilines
 
