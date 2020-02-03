@@ -1,5 +1,7 @@
 # 1 Kubernetes Scheduler
 
+:o2: section numbers have no numbers
+
 :o2: please learn markdown
 
 :o2: use empty ilines
