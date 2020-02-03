@@ -1,4 +1,11 @@
 # 1 Kubernetes Scheduler
+
+:o2: please learn markdone
+
+:o2: use empty ilines
+
+:o2: all http links are non valid markdown use <>
+
 ## 1.1 Description
 The Kubernetes Scheduler (`kube-scheduler`) is a component of the Kubernetes Control Plane that assigns newly created Pods to available Nodes. Each Pod has its own requirements, as do the containers within that Pod. In order to assign a given Pod to a Node, `kube-scheduler` first searches the cluster for "feasible" Nodes, calculates scores for each feasible Node, and then assigns the Pod to the Node with the highest score.
 ### 1.1.1 Filtering
