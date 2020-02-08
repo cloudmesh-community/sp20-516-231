@@ -26,4 +26,4 @@ In September 2018, lightning strikes interefered with a Microsoft data center in
 
 <https://www.datacenterknowledge.com/uptime/microsoft-blames-severe-weather-azure-cloud-outage>
 
-<https://devblogs.microsoft.com/devopsservice/?p=17485
+<https://devblogs.microsoft.com/devopsservice/?p=17485>
