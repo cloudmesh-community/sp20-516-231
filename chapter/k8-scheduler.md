@@ -32,7 +32,10 @@ image(s) and may be able to start the Pod faster.
 
 ## 1.2 Example
 
-idea - set up a custom scheduler for certain pods
+idea - set up a custom scheduler for certain pods (no, super dumb to pull off on windows)
+
+- try scheduler extender instead, maybe write a new policy
+  - easiest policy would be one that always rejects nodes so you know it's working
 
 rationale - can contain some rules for pods that you only have to define once and then send pods to the scheduler instead of copy-pasting whatever affinity rule to each pod
 
