@@ -32,19 +32,47 @@ image(s) and may be able to start the Pod faster.
 
 ## 1.2 Examples
 
-### 1.2.1 Scheduler Extender
+### 1.2.1 Customizing the Scheduler
 
-The functionality of `kube-scheduler` can be augmented by developing a "scheduler extender" process, which can include new or modified predicates and priority functions. In this example, we will set up two scheduler extenders that can be called when scheduling pods. This example assumes you have already installed kubectl and minikube according to __reference the cloud textbook__. 
+The functionality of `kube-scheduler` can be augmented with new predicates and priority functions, although this is rarely necessary in practice. Some options for customizing `kube-scheduler` include running multiple schedulers in a cluster and running a "scheduler extender http(s) process, both of which are poorly documented and exceedingly difficult to implement on Windows machines. The most straightforward method to customize `kube-scheduler` is to write a JSON file containing desired predicates and priority functions and pass this file to `kube-scheduler` when the cluster is launched. When using a custom config file, `kube-scheduler` will only call the functions named in the file as opposed to all default functions. The Kubernetes team recommends installing minikube and kubectl, which would allow you to execute `minikube start --extra-config=scheduler.AlgorithmSource.Policy.File.Path=$FILE`. However, setting up minikube and kubectl is an arduous process on Windows, and since multipass is expected for this course, we will use mircok8s running on a multipass instance.
 
+#### 1.2.1.1 Installing microk8s
 
+This assumes you have already installed multipass on your machine. Follow these steps to install microk8s on a multipass VM.
+```
+$ multipass launch --name microk8s-vm --mem 2G --disk 40G
+$ multipass shell microk8s-vm
+$ sudo snap install microk8s --classic
+# check microk8s status
+$ sudo microk8s.status --wait-ready
+$ sudo microk8s.enable dns dashboard registry
+```
 
-idea - set up a custom scheduler for certain pods (no, super dumb to pull off on windows)
+#### 1.2.1.2 Setting up a Custom Config File
 
-- try scheduler extender instead, maybe write a new policy
-  - easiest policy would be one that always rejects nodes so you know it's working
+microk8s starts its version of `kube-scheduler` by calling snap.microk8s.daemon-scheduler with the arguments in /var/snap/microk8s/current/args/kube-scheduler. To point it to a custom config file, run the following command.
+```
+$ echo '--policy-config-file=$HOME/my_cfg/k8s-sched-cfg.json | sudo tee -a /var/snap/microk8s/current/args/kube-scheduler
+```
 
-rationale - can contain some rules for pods that you only have to define once and then send pods to the scheduler instead of copy-pasting whatever affinity rule to each pod
+Write a custom config file.
+```
+$ mkdir $HOME/my_cfg
+# If you aren't familiar with vim, press "i" to start INSERT mode. When you are done typing, press ESC, then type ":wq" to write changes and quit. To quit without saving changes, type ":q!"
+$ vim k8s-sched-cfg.json
+```
 
+> example
+> json
+> goes
+> here
+
+Restart `kube-scheduler`.
+```
+$ sudo systemctl restart snap.microk8s.daemon-scheduler.service
+```
+
+`kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from /var/snap/microk8s/current/args/kube-scheduler and restart `kube-scheduler` again.
 
 ## Sources
 
