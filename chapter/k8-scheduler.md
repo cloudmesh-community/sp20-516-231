@@ -63,8 +63,13 @@ $ vim k8s-sched-cfg.json
 ```
 
 > example
+
 > json
+
 > goes
+
+> right
+
 > here
 
 Restart `kube-scheduler`.
