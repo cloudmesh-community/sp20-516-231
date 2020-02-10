@@ -1,4 +1,4 @@
-# Kubernetes Scheduler
+# 1 Kubernetes Scheduler
 
 :o2: section numbers have no numbers
 
@@ -8,13 +8,13 @@
 
 :o2: all http links are non valid markdown use <>
 
-## Description
+## 1.1 Description
 
 The Kubernetes Scheduler (`kube-scheduler`) is a component of the Kubernetes Control Plane that assigns newly created Pods to available Nodes. Each Pod has its own requirements, as do the containers within that Pod. In order to assign a given Pod to a Node, `kube-scheduler` first searches the cluster for "feasible" Nodes, calculates scores for each feasible Node, and then assigns the Pod to the Node with the highest score.
 
 ### 1.1.1 Filtering
 
-Filtering is the process by which `kube-scheduler` determines whether each Node in the cluster is considered "feasible," or able to meet all of a Pod's hard requirements. Filtering factors include:
+Filtering is the process by which `kube-scheduler` determines whether each Node in the cluster is considered "feasible," or able to meet all of a Pod's hard requirements. Filtering factors (predicates) include:
 
 * Whether a Pod has requested specific Nodes
 * Whether a Pod has requested Nodes with certain characteristics, such as dev Nodes or Production nodes.
@@ -23,14 +23,20 @@ Filtering is the process by which `kube-scheduler` determines whether each Node 
 
 ### 1.1.2 Scoring
 
-Scoring is the process by which `kube-scheduler` selects one Node from a list of feasible Nodes. Scoring factors include:
+Scoring is the process by which `kube-scheduler` selects one Node from a list of feasible Nodes. Scoring factors (priority functions) include:
 
 * Whether a node has cached the image(s) needed to host the Pod. This means the Node will not have to download the 
 image(s) and may be able to start the Pod faster.
 * Whether a node is hosting Pods that are part of the same Service as the Pod being scheduled. It may be preferable to spread a Service's Pods across multiple Nodes to make it more resilient to the failure of a single Node.
 * The number of Pods and allocated resources on a Node. It may be preferable to select relatively empty nodes, but on the other hand, selecting nearly more full nodes could allow a set of Services to run on as few Nodes as possible, which could save money.
 
-## 1.2 Example
+## 1.2 Examples
+
+### 1.2.1 Scheduler Extender
+
+The functionality of `kube-scheduler` can be augmented by developing a "scheduler extender" process, which can include new or modified predicates and priority functions. In this example, we will set up two scheduler extenders that can be called when scheduling pods. This example assumes you have already installed kubectl and minikube according to __reference the cloud textbook__. 
+
+
 
 idea - set up a custom scheduler for certain pods (no, super dumb to pull off on windows)
 
@@ -44,18 +50,18 @@ rationale - can contain some rules for pods that you only have to define once an
 
 :o2: refs need angle brackets
 
-https://kubernetes.io/docs/concepts/overview/components/
+<https://kubernetes.io/docs/concepts/overview/components/>
 
-https://kubernetes.io/docs/concepts/configuration/scheduling-framework/
+<https://kubernetes.io/docs/concepts/configuration/scheduling-framework/>
 
-https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/
+<https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/>
 
-https://kubernetes.io/docs/concepts/scheduling/scheduler-perf-tuning/
+<https://kubernetes.io/docs/concepts/scheduling/scheduler-perf-tuning/>
 
-https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+<https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/>
 
-https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
+<https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/>
 
-https://developer.ibm.com/technologies/containers/articles/creating-a-custom-kube-scheduler/
+<https://developer.ibm.com/technologies/containers/articles/creating-a-custom-kube-scheduler/>
 
-https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
+<https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md>
