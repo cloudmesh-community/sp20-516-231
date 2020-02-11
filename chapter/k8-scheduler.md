@@ -50,7 +50,9 @@ $ echo '--policy-config-file=$HOME/my_cfg/k8s-sched-cfg.json | sudo tee -a /var/
 Write a custom config file.
 ```
 $ mkdir $HOME/my_cfg
-# If you aren't familiar with vim, press "i" to start INSERT mode. When you are done typing, press ESC, then type ":wq" to write changes and quit. To quit without saving changes, type ":q!"
+# If you aren't familiar with vim, press "i" to start INSERT mode.
+# When you are done typing, press ESC, then type ":wq" to write changes and quit. 
+# To quit without saving changes, type ":q!"
 $ vim k8s-sched-cfg.json
 ```
 
