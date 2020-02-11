@@ -1,18 +1,10 @@
-# 1 Kubernetes Scheduler
+# Kubernetes Scheduler sp20-516-231 Brian Kegerreis
 
-:o2: section numbers have no numbers
-
-:o2: please learn markdown
-
-:o2: use empty ilines
-
-:o2: all http links are non valid markdown use <>
-
-## 1.1 Description
+## Description
 
 The Kubernetes Scheduler (`kube-scheduler`) is a component of the Kubernetes Control Plane that assigns newly created Pods to available Nodes. Each Pod has its own requirements, as do the containers within that Pod. In order to assign a given Pod to a Node, `kube-scheduler` first searches the cluster for "feasible" Nodes, calculates scores for each feasible Node, and then assigns the Pod to the Node with the highest score.
 
-### 1.1.1 Filtering
+### Filtering
 
 Filtering is the process by which `kube-scheduler` determines whether each Node in the cluster is considered "feasible," or able to meet all of a Pod's hard requirements. Filtering factors (predicates) include:
 
@@ -21,7 +13,7 @@ Filtering is the process by which `kube-scheduler` determines whether each Node 
 * Whether each node can accommodate the Pod's memory and CPU requirements
 * Whether each noe can mount the Volumes requested by the Pod
 
-### 1.1.2 Scoring
+### Scoring
 
 Scoring is the process by which `kube-scheduler` selects one Node from a list of feasible Nodes. Scoring factors (priority functions) include:
 
@@ -30,13 +22,13 @@ image(s) and may be able to start the Pod faster.
 * Whether a node is hosting Pods that are part of the same Service as the Pod being scheduled. It may be preferable to spread a Service's Pods across multiple Nodes to make it more resilient to the failure of a single Node.
 * The number of Pods and allocated resources on a Node. It may be preferable to select relatively empty nodes, but on the other hand, selecting nearly more full nodes could allow a set of Services to run on as few Nodes as possible, which could save money.
 
-## 1.2 Examples
+## Examples
 
-### 1.2.1 Customizing the Scheduler
+### Customizing the Scheduler
 
 The functionality of `kube-scheduler` can be augmented with new predicates and priority functions, although this is rarely necessary in practice. Some options for customizing `kube-scheduler` include running multiple schedulers in a cluster and running a "scheduler extender http(s) process, both of which are poorly documented and exceedingly difficult to implement on Windows machines. The most straightforward method to customize `kube-scheduler` is to write a JSON file containing desired predicates and priority functions and pass this file to `kube-scheduler` when the cluster is launched. When using a custom config file, `kube-scheduler` will only call the functions named in the file as opposed to all default functions. The Kubernetes team recommends installing minikube and kubectl, which would allow you to execute `minikube start --extra-config=scheduler.AlgorithmSource.Policy.File.Path=$FILE`. However, setting up minikube and kubectl is an arduous process on Windows and not even suggested sandbox tools like <labs.play-with-k8s.com> and <katacoda.com/courses/kubernetes/playground> provide the necessary functionality. Since multipass is expected for this course, we will use mircok8s running on a multipass instance.
 
-#### 1.2.1.1 Installing microk8s
+#### Installing microk8s
 
 This assumes you have already installed multipass on your machine. Follow these steps to install microk8s on a multipass VM.
 ```
@@ -48,7 +40,7 @@ $ sudo microk8s.status --wait-ready
 $ sudo microk8s.enable dns dashboard registry
 ```
 
-#### 1.2.1.2 Setting up a Custom Config File
+####  Setting up a Custom Config File
 
 microk8s starts its version of `kube-scheduler` by calling snap.microk8s.daemon-scheduler with the arguments in /var/snap/microk8s/current/args/kube-scheduler. To point it to a custom config file, run the following command.
 ```
