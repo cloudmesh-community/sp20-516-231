@@ -56,15 +56,55 @@ $ mkdir $HOME/my_cfg
 $ vim k8s-sched-cfg.json
 ```
 
-> example
-
-> json
-
-> goes
-
-> right
-
-> here
+This custom config file specifies certain predicates and weighted priority functions. It is important to use caution when developing custom config files, as omitting certain predicates could cause performance issues or errors. For example, removing the `PodFitsResources` predicate could cause a Pod to be scheduled to a Node that does not have enough memory or CPUs to accommodate it, and removing the `NoDiskConflict` predicate could cause a Pod to be scheduled to a Node where it cannot mount its requested volumes.
+```json
+{
+  "predicates": [
+    {
+      "name": "PodFitsHostPorts"
+    },
+    {
+      "name": "PodFitsHost"
+    },
+    {
+      "name": "PodFitsResources"
+    },
+    {
+      "name": "PodMatchNodeSelector"
+    },
+    {
+      "name": "NoDiskConflict"
+    },
+    {
+      "name": "CheckVolumeBinding"
+    },
+    {
+      "name": "CheckNodeCondition"
+    },
+    {
+      "name": "PodToleratesNodeTaints"
+    }
+  ],
+  "priorities": [
+    {
+      "name": "LeastRequestedPriority",
+      "weight": 1
+    },
+    {
+      "name": "SelectorSpreadPriority",
+      "weight": 2
+    },
+    {
+      "name": "NodeAffinityPriority",
+      "weight": 5
+    },
+    {
+      "name": "ImageLocalityPriority",
+      "weight": 2
+    }
+  ]
+}
+```
 
 Restart `kube-scheduler`.
 ```
