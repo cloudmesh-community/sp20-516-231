@@ -6,9 +6,9 @@ the last activities first (e.g. in reverse cronological order by week)
 
 ## Week Fri 02/14/20-02/21/20
 * gave up on Windows 10 Pro
-  * installed eoan ermine
+  * installed ubuntu 19.10
   * everything is better now
-* started test vms in chameleon
+* started test vms in chameleon via horizon web interface and cloudmesh cli
 
 ## Week Fri 02/07/20-02/14/20
 * fought with cmsd
