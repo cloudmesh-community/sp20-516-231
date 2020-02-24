@@ -1,0 +1,37 @@
+
+openapi: 3.0.0
+info:
+  title: echo
+  description: Repeat a given word some number of times.
+  version: test
+servers:
+  - url: http://localhost/cloudmesh/echo
+    description: Optional server description, e.g. Main (production) server
+paths:
+  /echo:
+    get:
+      description: Repeat a given word some number of times.
+      parameters:
+        - in: query
+          name: word
+          description: not yet available, check function docstring
+          schema:
+            type: string
+        - in: query
+          name: n
+          description: not yet available, check function docstring
+          schema:
+            type: integer
+        - in: query
+          name: toupper
+          description: not yet available, check function docstring
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: not yet available, check function docstring
+          content:
+            text/plain:
+              schema:
+                type: string
+
