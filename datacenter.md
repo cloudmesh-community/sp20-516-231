@@ -1,6 +1,12 @@
 # Datacenter Brian Kegerreis sp20-516-231
 
-:o2: attending markdown session mandatory
+:o2: use empty lines
+
+:o2: add bibtex
+
+:o2: convert things such as (<https://storage.googleapis.com/gweb-sustainability.appspot.com/pdf/24x7-carbon-free-energy-data-centers.pdf>) to bibtex. 
+
+:o2: remove sources convert to bibtex and use labels in text where needed
 
 ## E.Datacenter.4
 ### Wind energy
