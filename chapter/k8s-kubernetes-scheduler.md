@@ -138,12 +138,12 @@ Node selection constraints that integrate with the scheduler can be placed
    
    1. More options are provided in the language than simply "exact match
    " comparison and the use of "AND".  You can do comparisons such as "In
-   ", "NotIn", "Gt" (greater than), and others. Example below:
+   ", "NotIn", "Gt" (greater than), and others.
    
    2. The label rule can be identified as being optional or a "soft
     preference".  Meaning that if the rule is not satisfied but the scheduler
      still finds this to be the best node to run on, the pod will still be
-      scheduled on that node. Example below:  
+      scheduled on that node.
       
    3. Inter-pod affinity is possible which allows for these label rules to be
     applied based on pods already running on a node.  Meaning, if my pod
