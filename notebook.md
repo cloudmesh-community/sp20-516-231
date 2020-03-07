@@ -6,6 +6,7 @@ the last activities first (e.g. in reverse cronological order by week)
 
 ## Week Fri 02/28/20-03/06/20
 * AI project - openapi generator - support multiple data types, classes, $refs
+* multipass exercises
 
 ## Week Fri 02/21/20-02/28/20
 * AI project - openapi generator example
