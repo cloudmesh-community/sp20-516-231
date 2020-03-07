@@ -752,7 +752,7 @@ $ mkdir $HOME/my_cfg
 $ vim k8s-sched-cfg.json
 ```
 
-This custom config file specifies certain predicates and weighted priority functions. It is important to use caution when developing custom config files, as omitting certain predicates could cause performance issues or errors. For example, removing the `PodFitsResources` predicate could cause a Pod to be scheduled to a Node that does not have enough memory or CPUs to accommodate it, and removing the `NoDiskConflict` predicate could cause a Pod to be scheduled to a Node where it cannot mount its requested volumes. In the following example, `NodeAffinityPriority` has been configured to have a higher weight than the other priority functions, so the node affinity of each pod that is scheduled will have more influence.
+This custom config file specifies certain predicates and weighted priority functions. It is important to use caution when developing custom config files, as omitting certain predicates could cause performance issues or errors. For example, removing the `PodFitsResources` predicate could cause a Pod to be scheduled to a Node that does not have enough memory or CPUs to accommodate it, and removing the `NoDiskConflict` predicate could cause a Pod to be scheduled to a Node where it cannot mount its requested volumes. In the following example, notice that `PodToleratesNodeTaints` is not included in the predicates section, so tolerations will be ignored. Furthermore, `NodeAffinityPriority` has been configured to have a higher weight than the other priority functions, so the node affinity of each pod that is scheduled will have more influence.
 
 ```json
 {
@@ -763,8 +763,7 @@ This custom config file specifies certain predicates and weighted priority funct
     {"name": "PodMatchNodeSelector"},
     {"name": "NoDiskConflict"},
     {"name": "CheckVolumeBinding"},
-    {"name": "CheckNodeCondition"},
-    {"name": "PodToleratesNodeTaints"}
+    {"name": "CheckNodeCondition"}
   ],
   "priorities": [
     {
@@ -795,3 +794,8 @@ $ sudo systemctl restart snap.microk8s.daemon-scheduler.service
 
 `kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from /var/snap/microk8s/current/args/kube-scheduler and restart `kube-scheduler` again.
 
+Now try to schedule pods to the tainted node again. The pods should fail to be scheduled because their tolerations are being ignored by the custom scheduler config file.
+
+```
+$ kubectl run test-taint --image busybox --replicas 4 -- sleep 99
+```
