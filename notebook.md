@@ -4,6 +4,12 @@ Please make sure you update it every week even if you have no time to work on
 anything. You can surely spend 2 minutes to update this document. Please put 
 the last activities first (e.g. in reverse cronological order by week)
 
+## Week Fri 02/28/20-03/06/20
+* AI project - openapi generator - support multiple data types, classes, $refs
+
+## Week Fri 02/21/20-02/28/20
+* AI project - openapi generator example
+
 ## Week Fri 02/14/20-02/21/20
 * gave up on Windows 10 Pro
   * installed ubuntu 19.10
