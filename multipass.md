@@ -10,6 +10,22 @@ multipassd 1.1.0
 
 Linux installation instructions do not need improvement
 
+```bash
+$ cms multipass images
++------------------+--------+-------------------------------+-----------+------------+--------------------+
+| Name             | OS     | Release                       | Remote    | Version    | Alias              |
++------------------+--------+-------------------------------+-----------+------------+--------------------+
+| 16.04            | Ubuntu | 16.04 LTS                     |           | 20200218.1 | ['xenial']         |
+| 18.04            | Ubuntu | 18.04 LTS                     |           | 20200218   | ['bionic', 'lts']  |
+| 19.10            | Ubuntu | 19.10                         |           | 20200211   | ['eoan']           |
+| core             | Ubuntu | Core 16                       |           | 20200213   | ['core16']         |
+| core18           | Ubuntu | Core 18                       |           | 20200210   | []                 |
+| daily:20.04      | Ubuntu | 20.04 LTS                     | daily     | 20200305   | ['devel', 'focal'] |
+| snapcraft:core   |        | Snapcraft builder for Core 16 | snapcraft | 20200221   | ['core16']         |
+| snapcraft:core18 |        | Snapcraft builder for Core 18 | snapcraft | 20200221   | []                 |
++------------------+--------+-------------------------------+-----------+------------+--------------------+
+```
+
 ## E.Multipass.2
 
 Primary is a default instance that launches when a user executes certain multipass commands without a specified instance. This is usually based on the latest Ubuntu LTS but can be configured by the user.
