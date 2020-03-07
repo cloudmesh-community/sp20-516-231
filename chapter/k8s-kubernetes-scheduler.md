@@ -261,25 +261,9 @@ Taints and tolerations consist of a key, value, effect and operator
     
 ## Customizing the Scheduler
 
-The functionality of `kube-scheduler` can be augmented with new predicates
- and priority functions, although this is rarely necessary in practice. Some
-  options for customizing `kube-scheduler` include running multiple
-   schedulers in a cluster and running a "scheduler extender" http(s) process
-   , both of which are poorly documented and exceedingly difficult to
-    implement on Windows machines. The most straightforward method to
-     customize `kube-scheduler` is to write a JSON file containing desired
-      predicates and priority functions and pass this file to `kube-scheduler
-      ` when the cluster is launched. When using a custom config file, `kube
-      -scheduler` will only call the functions named in the file as opposed
-       to all default functions. The Kubernetes team recommends installing
-        minikube and kubectl, which would allow you to execute `minikube
-         start --extra-config=scheduler.AlgorithmSource.Policy.File.Path
-         =$FILE`. However, setting up minikube and kubectl is an arduous
-          process on Windows, and not even suggested sandbox tools like
-           <https://lab.play-with-k8s.com> and <https://katacoda.com/courses
-           /kubernetes/playground> provide the necessary functionality. Since
-            multipass is expected for this course, we will use mircok8s
-             running on a multipass instance.
+In some cases, it may be advantageous to customize `kube-scheduler` itself. For example, it may be more efficient to apply certain policies to `kube-scheduler` once instead of defining them for each new pod that is created, or one may wish to override certain policies contained in pod configurations. In rare cases, new predicates and priority functions can be written that will be applied during the filtering and scoring processes.
+
+Some options for customizing `kube-scheduler` include running a "scheduler extender" http(s) process or running multiple schedulers in a cluster and assigning pods to different schedulers. The most straightforward method to customize `kube-scheduler` is to write a JSON file containing desired predicates and priority functions and pass this file to `kube-scheduler` when the cluster is launched. When using a custom config file, `kube-scheduler` will only call the functions named in the file as opposed to all default functions. Note that this may cause unstable or destructive scheduling behavior if not done carefullly.
              
 ## DEMO
 
@@ -295,7 +279,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your
     
 ### Setup of Microk8s cluster
 
-1. Log into power shell as admin
+1. Log into power shell as admin (Windows) or launch a terminal (Linux, Mac)
  
 2. Create 1 master node
 
@@ -756,47 +740,31 @@ kubectl taint nodes microk8s-vm-w1 node-type=NoSchedule-
 ####  Setting up a Custom Config File
 
 microk8s starts its version of `kube-scheduler` by calling snap.microk8s.daemon-scheduler with the arguments in /var/snap/microk8s/current/args/kube-scheduler. To point it to a custom config file, run the following command.
+
 ```
-$ echo '--policy-config-file=$HOME/my_cfg/k8s-sched-cfg.json | sudo tee -a /var/snap/microk8s/current/args/kube-scheduler
+$ echo --policy-config-file=$HOME/my_cfg/k8s-sched-cfg.json | sudo tee -a /var/snap/microk8s/current/args/kube-scheduler
 ```
 
-Write a custom config file.
+Create a directory to hold a custom config file, and edit the file in your text editor of choice.
+
 ```
 $ mkdir $HOME/my_cfg
-# If you aren't familiar with vim, press "i" to start INSERT mode.
-# When you are done typing, press ESC, then type ":wq" to write changes and quit. 
-# To quit without saving changes, type ":q!"
 $ vim k8s-sched-cfg.json
 ```
 
-This custom config file specifies certain predicates and weighted priority functions. It is important to use caution when developing custom config files, as omitting certain predicates could cause performance issues or errors. For example, removing the `PodFitsResources` predicate could cause a Pod to be scheduled to a Node that does not have enough memory or CPUs to accommodate it, and removing the `NoDiskConflict` predicate could cause a Pod to be scheduled to a Node where it cannot mount its requested volumes.
+This custom config file specifies certain predicates and weighted priority functions. It is important to use caution when developing custom config files, as omitting certain predicates could cause performance issues or errors. For example, removing the `PodFitsResources` predicate could cause a Pod to be scheduled to a Node that does not have enough memory or CPUs to accommodate it, and removing the `NoDiskConflict` predicate could cause a Pod to be scheduled to a Node where it cannot mount its requested volumes. In the following example, `NodeAffinityPriority` has been configured to have a higher weight than the other priority functions, so the node affinity of each pod that is scheduled will have more influence.
+
 ```json
 {
   "predicates": [
-    {
-      "name": "PodFitsHostPorts"
-    },
-    {
-      "name": "PodFitsHost"
-    },
-    {
-      "name": "PodFitsResources"
-    },
-    {
-      "name": "PodMatchNodeSelector"
-    },
-    {
-      "name": "NoDiskConflict"
-    },
-    {
-      "name": "CheckVolumeBinding"
-    },
-    {
-      "name": "CheckNodeCondition"
-    },
-    {
-      "name": "PodToleratesNodeTaints"
-    }
+    {"name": "PodFitsHostPorts"},
+    {"name": "PodFitsHost"},
+    {"name": "PodFitsResources"},
+    {"name": "PodMatchNodeSelector"},
+    {"name": "NoDiskConflict"},
+    {"name": "CheckVolumeBinding"},
+    {"name": "CheckNodeCondition"},
+    {"name": "PodToleratesNodeTaints"}
   ],
   "priorities": [
     {
@@ -820,12 +788,10 @@ This custom config file specifies certain predicates and weighted priority funct
 ```
 
 Restart `kube-scheduler`.
+
 ```
 $ sudo systemctl restart snap.microk8s.daemon-scheduler.service
 ```
 
-`kube-scheduler` will now use the predicates and priority functions listed in
- the custom config file. To revert to default scheduler behavior, delete the
-  last line from /var/snap/microk8s/current/args/kube-scheduler and restart
-   `kub-scheduler` again.
+`kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from /var/snap/microk8s/current/args/kube-scheduler and restart `kube-scheduler` again.
 
