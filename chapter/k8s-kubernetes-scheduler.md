@@ -31,13 +31,10 @@ can stick to one container in one pod, it's up to the developer.  See [Fig 1
 ](@fig1:sp20-516-237) 
 for a more detailed view of a pod.
 
-:o2: image includsin wrong, if copied, citation is missing Fig 1 wrong, please see notation.md for proper citation
-empty lines in document missing 
 
 ![Fig 1 - Pods in a Node [@kubernetes_poddiag2020-sp20-516-237]](./images/node_pic.png){#fig1:sp20-516-237}
 
 
-:o2: punctuation wrong
 
 So how does Kubernetes determine how to assign a pod, it's smallest unit of
 work, to a given node?  The main way is through the Kubernetes Scheduler
@@ -49,7 +46,6 @@ section.
 
 ## Assigning Pods to Nodes - kube-scheduler
 
-:o2: indentation messed up. please learn markdown
 
 Pods can be assigned to specific nodes by administrators or deployment
  engineers but that means a lot of manual work to avoid unhealthy nodes or
