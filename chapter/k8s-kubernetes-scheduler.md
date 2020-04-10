@@ -371,7 +371,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         vi deployment_nodeselector.yaml
         
-5. Insert the following into the deployment yaml file (replace <your docker user id> with your docker hub user id):
+5. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
 
         
         apiVersion: apps/v1
@@ -392,7 +392,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
             spec:
               containers:
               - name: test-app-ns
-                image: <your docker user id>/test-image:public
+                image: **your docker user id**/test-image:public
                 imagePullPolicy: Always
                 ports:
                 - containerPort: 5001
@@ -447,7 +447,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         vi deployment_nodeaffinity.yaml
         
-5. Insert the following into the deployment yaml file (replace <your docker user id> with your docker hub user id):
+5. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
 
         apiVersion: apps/v1
         kind: Deployment
@@ -467,7 +467,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
             spec:
               containers:
               - name: test-app-na
-                image: <your docker user id>/test-image:public
+                image: **your docker user id**/test-image:public
                 imagePullPolicy: Always
                 ports:
                 - containerPort: 5002
