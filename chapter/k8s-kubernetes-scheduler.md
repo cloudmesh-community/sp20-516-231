@@ -1,10 +1,13 @@
-# Kubernetes Advanced Scheduling - Ashok Singam (sp20-516-232), Brian Kegerreis (sp20-516-231) , Jonathan Beckford (sp20-516-237)
+# Kubernetes Advanced Scheduling
 
-
-* Jonathan Beckford, Ashok Singam, Brian Kegerreis
+* Ashok Singam (sp20-516-232)
+* Brian Kegerreis (sp20-516-231)
+* Jonathan Beckford (sp20-516-237)
 * [sp20-516-231](https://github.com/cloudmesh-community/sp20-516-231)
 * [report](https://github.com/cloudmesh-community/sp20-516-231/blob/master/chapter/k8s-kubernetes-scheduler.md)
 
+:o2: please use proper markdown. Whatever editor you use does not produce proper markdown
+see the raw text 
 
 ## Introduction
 
@@ -46,6 +49,8 @@ section.
 
 ## Assigning Pods to Nodes - kube-scheduler
 
+:o2: This entire section is not proper markdown
+
 
 Pods can be assigned to specific nodes by administrators or deployment
  engineers but that means a lot of manual work to avoid unhealthy nodes or
@@ -82,6 +87,9 @@ Pods can be assigned to specific nodes by administrators or deployment
   
 ## Assigning Pods to Nodes - pod configuration
 
+
+:o2: This entire section is not proper markdown
+
 A pod can be assigned to a node either via the scheduler or can be
  manually directed to a node via the nodeName field in the pod config file
  .  Using
@@ -96,8 +104,12 @@ A pod can be assigned to a node either via the scheduler or can be
 Node selection constraints that integrate with the scheduler can be placed
  into 3 categories or types: nodeSelector, node affinity, and taints/tolerations.
  
+ :o2: This entire section is not proper markdown
+
    ### nodeSelector
- 
+
+:o2: This entire section is not proper markdown
+
    This is the earliest feature Kubernetes used to allow developers or admins
     to assign pods to specific nodes [@Goltsman2019-sp20-516-237].  It makes use of key/value pair
      labels to do this.  The key/value pair label must first be tagged to the
@@ -121,6 +133,8 @@ Node selection constraints that integrate with the scheduler can be placed
   With these two pre-requisites in place the scheduler will now be able to
    assign any requested pod with this label to the appropriate node.  
  
+ :o2: This entire section is not proper markdown
+
    ### Node Affinity
  
    The use of node affinity is a much more sophisticated
@@ -148,9 +162,13 @@ Node selection constraints that integrate with the scheduler can be placed
      scheduler will determine if actively running pods on a given node can
       run with my pod based on these label rules matching or not matching
        between new pod and existing pods.
- 
+
+:o2: This entire section is not proper markdown
+
    ##### Node affinity example:
-    
+
+:o2: This entire section is not proper markdown
+
   The goal is to have a pod scheduled on a rhel (os-type) node as a must AND
     preferrably on a node with disk-type of ssd.  In the below example, a pod
      would normally get scheduled on workernode3 given the pod configuration.
@@ -183,9 +201,13 @@ Node selection constraints that integrate with the scheduler can be placed
               - key: disk-type
                 operator: In
                 values:
-                - "ssd" 
- 
+                - "ssd"
+                
+:o2: This entire section is not proper markdown
+                
    ##### Inter-pod affinity example:
+
+:o2: This entire section is not proper markdown
    
    Inter-pod affinity and anti-affinity are more powerful than node affinity
     because it allows you to create node selection rules based on pods that
@@ -246,6 +268,8 @@ Taints and tolerations consist of a key, value, effect and operator
 
 2. **Value**: Value is any string, up to 63 characters. The value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores. 
 
+:o2: itemize lisst must have empty line before and after. in your case they must be on the same level as the previous sentence after the 3. e. you have an additional space
+
 3. **Effect**: Effect can be 
     * NoSchedule: New pods that do not match the taint are not scheduled onto that node. Existing pods on the node remain.
     * PreferNoSchedule: New pods that do not match the taint might be scheduled onto that node, but the scheduler tries not to.Existing
@@ -262,6 +286,8 @@ In some cases, it may be advantageous to customize `kube-scheduler` itself. For 
 Some options for customizing `kube-scheduler` include running a "scheduler extender" http(s) process or running multiple schedulers in a cluster and assigning pods to different schedulers. The most straightforward method to customize `kube-scheduler` is to write a JSON file containing desired predicates and priority functions and pass this file to `kube-scheduler` when the cluster is launched. When using a custom config file, `kube-scheduler` will only call the functions named in the file as opposed to all default functions. Note that this may cause unstable or destructive scheduling behavior if not done carefullly.
              
 ## DEMO
+
+:o2: This entire section is not proper markdown
 
 The below details cover, first, how to setup a small kubernetes cluster on your
  laptop using Microk8s.  Second, how to setup small flask app in a docker image
@@ -361,19 +387,12 @@ The below details cover, first, how to setup a small kubernetes cluster on your
  name):
         
         FROM python:3.8
-        
         MAINTAINER "Your Name"
-        
         RUN mkdir /app
-        
         WORKDIR /app
-        
         COPY . /app
-        
         RUN pip install -r requirements.txt
-        
         ENTRYPOINT [ "python" ]
-        
         CMD [ "app.py" ]
         
 9.  Install docker on master node
@@ -444,7 +463,9 @@ The below details cover, first, how to setup a small kubernetes cluster on your
 15. Deploy image as Docker container to kubernetes cluster
  
         kubectl apply -f deployment.yaml
-        
+
+:o2: This entire section is not proper markdown
+
 16. Use below commands to check on your deployment.  The "get" command will list
  the pod you just deployed
   and it's status.  Wait until it shows as "running".  The "describe" command
@@ -520,7 +541,9 @@ The below details cover, first, how to setup a small kubernetes cluster on your
 6. Deploy image as Docker container to kubernetes cluster
  
         kubectl apply -f deployment_nodeselector.yaml
-        
+
+:o2: This entire section is not proper markdown
+
 7. Use below commands to check on your deployment.  If you have previously
  deployed pods, this pod name should have "mytest-deployment-ns" as a prefix
  .  The
@@ -615,7 +638,9 @@ The below details cover, first, how to setup a small kubernetes cluster on your
 6. Deploy image as Docker container to kubernetes cluster
  
         kubectl apply -f deployment_nodeaffinity.yaml
-        
+
+:o2: This entire section is not proper markdown
+
 7. Use below commands to check on your deployment.  If you have previously
  deployed pods, this pod name should have "mytest-deployment-na" as a prefix
  .  The
