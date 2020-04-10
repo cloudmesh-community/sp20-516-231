@@ -292,23 +292,19 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         sudo docker login
         
-11. Login to docker hub.  This does requires you to create [docker hub](https://hub.docker.com/) account as a pre-req if you don't have one.
+11. Build docker image (make sure you are in flask_web directory where Dockerfile exists and replace **your docker user id** with your docker hub user id)
 
-        sudo docker login
+        sudo docker build . -t **your docker user id**/test-image:public
         
-11. Build docker image (make sure you are in flask_web directory where Dockerfile exists and replace <your docker user id> with your docker hub user id)
-
-        sudo docker build . -t <your docker user id>/test-image:public
-        
-12. Push your image to docker hub (replace <your docker user id> with your docker hub user id)
+12. Push your image to docker hub (replace **your docker user id** with your docker hub user id)
     
-        sudo docker push <your docker user id>/test-image:public
+        sudo docker push **your docker user id**/test-image:public
         
 13. Create basic deployment yaml file
 
         vi deployment.yaml
         
-14. Insert the following into the deployment yaml file (replace <your docker user id> with your docker hub user id):
+14. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
 
         apiVersion: apps/v1
         kind: Deployment
@@ -328,7 +324,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
             spec:
               containers:
               - name: test-app
-                image: <your docker user id>/test-image:public
+                image: **your docker user id**/test-image:public
                 imagePullPolicy: Always
                 ports:
                 - containerPort: 5000
