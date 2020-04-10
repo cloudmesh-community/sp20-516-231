@@ -292,6 +292,10 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         sudo docker login
         
+11. Login to docker hub.  This does requires you to create [docker hub](https://hub.docker.com/) account as a pre-req if you don't have one.
+
+        sudo docker login
+        
 11. Build docker image (make sure you are in flask_web directory where Dockerfile exists and replace <your docker user id> with your docker hub user id)
 
         sudo docker build . -t <your docker user id>/test-image:public
