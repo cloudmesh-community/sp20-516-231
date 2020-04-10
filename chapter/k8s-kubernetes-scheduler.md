@@ -292,11 +292,11 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         sudo docker login
         
-11. Build docker image (make sure you are in flask_web directory where Dockerfile exists and replace **your docker user id** with your docker hub user id)
+11. Build docker image (make sure you are in flask_web directory where Dockerfile exists and replace **your docker user id** in command)
 
         sudo docker build . -t **your docker user id**/test-image:public
         
-12. Push your image to docker hub (replace **your docker user id** with your docker hub user id)
+12. Push your image to docker hub (replace **your docker user id** in command)
     
         sudo docker push **your docker user id**/test-image:public
         
@@ -304,7 +304,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         vi deployment.yaml
         
-14. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
+14. Insert the following into the deployment yaml file (replace **your docker user id** in yaml):
 
         apiVersion: apps/v1
         kind: Deployment
@@ -371,8 +371,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         vi deployment_nodeselector.yaml
         
-5. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
-
+5. Insert the following into the deployment yaml file (replace **your docker user id** in yaml):
         
         apiVersion: apps/v1
         kind: Deployment
@@ -447,7 +446,7 @@ The below details cover, first, how to setup a small kubernetes cluster on your 
 
         vi deployment_nodeaffinity.yaml
         
-5. Insert the following into the deployment yaml file (replace **your docker user id** with your docker hub user id):
+5. Insert the following into the deployment yaml file (replace **your docker user id** in yaml):
 
         apiVersion: apps/v1
         kind: Deployment
