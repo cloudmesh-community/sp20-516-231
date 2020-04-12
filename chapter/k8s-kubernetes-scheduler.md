@@ -52,7 +52,7 @@ Pods can be assigned to specific nodes by administrators or deployment
 engineers but that means a lot of manual work to avoid unhealthy nodes
 or nodes with inadequate resources [@Goltsman2019-sp20-516-237]. That
 is where the scheduler comes in to play. The scheduler in Kubernetes
-is called "kube-scheduler". Kube-scheduler performs a 2 step operation
+is called `kube-scheduler`. Kube-scheduler performs a 2 step operation
 when determining how to assign pods: Filtering and Scoring
 [@kubernetes_scheduler2020-sp20-516-237].
  
@@ -141,12 +141,12 @@ Key/value label pairs are still used on pod and node but the 3 key
 differences to nodeSelector per Kubernetes
 [@kubernetes_assignpod2020-sp20-516-237] are as follows:
    
-1. More options are provided in the language than simply "exact match"
-   comparison and the use of "AND". You can do comparisons such as
-   "In", "NotIn", "Gt" (greater than), and others.
+1. More options are provided in the language than simply *exact match*
+   comparison and the use of `AND`. You can do comparisons such as
+   `In`, `NotIn`, `Gt` (greater than), and others.
    
-2. The label rule can be identified as being optional or a "soft
-   preference".  Meaning that if the rule is not satisfied but the
+2. The label rule can be identified as being optional or a *soft
+   preference*.  Meaning that if the rule is not satisfied but the
    scheduler still finds this to be the best node to run on, the pod
    will still be scheduled on that node.
       
@@ -300,7 +300,7 @@ priority functions can be written that will be applied during the
 filtering and scoring processes.
 
 Some options for customizing `kube-scheduler` include running a
-"scheduler extender" http(s) process or running multiple schedulers in
+*scheduler extender* http(s) process or running multiple schedulers in
 a cluster and assigning pods to different schedulers. The most
 straightforward method to customize `kube-scheduler` is to write a
 JSON file containing desired predicates and priority functions and
@@ -427,7 +427,7 @@ slightly different.
 
         vi Dockerfile
         
-8. Insert the following into the Dockerfile (replace "Your Name" with your
+8. Insert the following into the Dockerfile (replace `Your Name` with your
    name):
         
         FROM python:3.8
@@ -507,9 +507,9 @@ slightly different.
  
         kubectl apply -f deployment.yaml
 
-16. Use below commands to check on your deployment. The "get" command
+16. Use below commands to check on your deployment. The `get` command
     will list the pod you just deployed and it's status. Wait until it
-    shows as "running".  The "describe" command will give you detailed
+    shows as `running`.  The `describe` command will give you detailed
     information and any errors that might have occurred. Notice that
     either one of these will also tell you what node the pod was
     scheduled to run on. In this case the scheduler is using default
@@ -585,12 +585,12 @@ slightly different.
 
 7. Use below commands to check on your deployment. If you have
    previously deployed pods, this pod name should have
-   "mytest-deployment-ns" as a prefix.  The "get" command will list
+   `mytest-deployment-ns` as a prefix.  The `get` command will list
    the pod you just deployed and it's status. Wait until it shows as
-   "running". The "describe" command will give you detailed
+   `running`. The `describe` command will give you detailed
    information and any errors that might have occurred. Notice that
    either one of these will also tell you what node the pod was
-   scheduled to run on which should have been worker node "1".
+   scheduled to run on which should have been worker node `1`.
  
         kubectl get pods
         kubectl describe pods
@@ -679,12 +679,12 @@ slightly different.
 
 7. Use below commands to check on your deployment. If you have
    previously deployed pods, this pod name should have
-   "mytest-deployment-na" as a prefix.  The "get" command will list
+   `mytest-deployment-na` as a prefix.  The `get` command will list
    the pod you just deployed and it's status. Wait until it shows as
-   "running". The "describe" command will give you detailed
+   `running`. The `describe` command will give you detailed
    information and any errors that might have occurred. Notice that
    either one of these will also tell you what node the pod was
-   scheduled to run on which should have been worker node "3".
+   scheduled to run on which should have been worker node `3`.
 
         kubectl get pods
         kubectl describe pods
