@@ -88,7 +88,7 @@ NOTE: For a full list of these policies see
       [here](https://kubernetes.io/docs/concept/scheduling/kube-scheduler/)
 
 
-## Assigning Pods to Nodes - pod configuration
+## Assigning Pods to Nodes - Pod Configuration
 
 A pod can be assigned to a node either via the scheduler or can be
 manually directed to a node via the nodeName field in the pod config
@@ -157,7 +157,7 @@ differences to nodeSelector per Kubernetes
    matching or not matching between new pod and existing pods.
 
 
-##### Node affinity example:
+#### Node Affinity Example
 
 The goal is to have a pod scheduled on a rhel (os-type) node as a must
 AND preferrably on a node with disk-type of ssd. In the below example,
@@ -195,7 +195,7 @@ Pod configuration:
                 - "ssd"
                 
                 
-##### Inter-pod affinity example:
+#### Inter-Pod Affinity Axample
    
 Inter-pod affinity and anti-affinity are more powerful than node
 affinity because it allows you to create node selection rules based on
@@ -311,7 +311,7 @@ that this may cause unstable or destructive scheduling behavior if not
 done carefully.
     
          
-## DEMO
+## Scheduler Demonstration
 
 The below details cover, first, how to setup a small kubernetes
 cluster on your laptop using Microk8s. Second, how to setup small
@@ -324,7 +324,7 @@ laptop. If you are running on a different OS the instructions will be
 slightly different.
 
   
-### Setup of Microk8s cluster
+### Setup of Microk8s Cluster
 
 1. Log into power shell as admin (Windows) or launch a terminal (Linux, Mac)
  
@@ -518,7 +518,7 @@ slightly different.
         kubectl get pods
         kubectl describe pods
         
-### Demo node selection rules -- nodeSelector
+### Demonstration of Node Selection Rules -- nodeSelector
 
 1. List out nodes and their existing labels:
         
@@ -596,7 +596,7 @@ slightly different.
         kubectl describe pods
 
 
-### Demo node selection rules -- Node Affinity
+### Demonstartion of Node Selection Rules -- Node Affinity
 
 1. List out nodes and their existing labels:
         
@@ -690,7 +690,7 @@ slightly different.
         kubectl describe pods
        
  
-### Taint Demo:
+### Taint Demoonstration
  
 Before applying taint on any node, try scheudling an App called busybox based on
 seeded image busybox.
@@ -741,7 +741,7 @@ test-taint-dd4d5cff5-jsww7   1/1     Running   0          19s   10.42.1.8   micr
 test-taint-64fc5f64b7-zxsh   1/1     Running   0          19s   10.42.1.8   microk8s-vm-w2   *none*           *none*
 ```
 
-### Toleration Demo:
+### Toleration Demonstration
 
 A toleration is how a pod declares that it can bypass a taint. It is
 basically a pass that will allow the pod onto any node with any
@@ -802,7 +802,7 @@ To remove taint we can use command:
 kubectl taint nodes microk8s-vm-w1 node-type=NoSchedule-
 ```
 
-### Custom Scheduler Demo
+### Custom Scheduler Demonstration
 
 ####  Setting up a Custom Config File
 
