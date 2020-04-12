@@ -317,25 +317,25 @@ running on a different OS the instructions will be slightly different.
         multipass shell microk8s-vm
         sudo snap install microk8s --classic
         
-      > the below should return a status of running for microk8s
+   > the below should return a status of running for microk8s
         
         sudo microk8s.status --wait-ready
         
-      > the below will add your default user when you log into vm shell to the
-      > microk8s group so that sudo is no longer required
+   > the below will add your default user when you log into vm shell to the
+   > microk8s group so that sudo is no longer required
         
         sudo usermod -a -G microk8s $USER
          
-      > the below will allow you execute kubectl commands directly without
-      > microk8s qualifier
+   > the below will allow you execute kubectl commands directly without
+   > microk8s qualifier
         
         echo "alias kubectl='microk8s.kubectl'" >> ~/.bash_aliases  
            
-      > exit out of shell
-        
+   > exit out of shell
+       
         exit
         
-      > the below will relogin to shell for all settings to take hold
+   > the below will relogin to shell for all settings to take hold
         
         multipass shell microk8s-vm
         
@@ -343,19 +343,19 @@ running on a different OS the instructions will be slightly different.
         
        multipass shell microk8s-vm
        
-      > the below will generate the join command you need to execute on each
-      > worker instance. The join command is unique for each worker instance so
-      > execute 3 times in this case
+   > the below will generate the join command you need to execute on each
+   > worker instance. The join command is unique for each worker instance so
+   > execute 3 times in this case
        
        microk8s.add-node
            
-      > login to each worker and execute the respective join command from above.
-      > Example below:
+   > login to each worker and execute the respective join command from above.
+   > Example below:
        
        multipass shell microk8s-vm-w1
        microk8s.join 192.168.200.238:25000/fQrUWjuDKsEkHLxAxXsftjeuAYItUvLF
        
-      > the above will list all of the nodes that are now part of your cluster
+   > the above will list all of the nodes that are now part of your cluster
              
        kubectl get nodes
             
