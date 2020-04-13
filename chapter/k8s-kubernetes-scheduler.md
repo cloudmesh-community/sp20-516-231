@@ -40,7 +40,7 @@ a pod.
 So how does Kubernetes determine how to assign a pod, it's smallest
 unit of work, to a given node? The main way is through the Kubernetes
 Scheduler. The Scheduler is responsible for identifying pods with no
-assigned pod and then assigning those pods to a particular node to run
+assigned node and then assigning those pods to a particular node to run
 on. The scheduler uses certain principles to make it's decision of
 where to assign pods. These principles and other scheduler details are
 described in the subsequent section.
@@ -450,11 +450,13 @@ slightly different.
         sudo docker login
         
 11. Build docker image (make sure you are in flask_web directory where
-    Dockerfile exists and replace **your docker user id** in command)
+    Dockerfile exists and replace `your docker user id` with your 
+    docker user id)
 
         sudo docker build . -t **your docker user id**/test-image:public
         
-12. Push your image to docker hub (replace **your docker user id** in command)
+12. Push your image to docker hub (replace `your docker user id` with your 
+    docker user id)
     
         sudo docker push **your docker user id**/test-image:public
         
@@ -462,8 +464,8 @@ slightly different.
 
         vi deployment.yaml
         
-14. Insert the following into the deployment yaml file (replace **your
-    docker user id** in yaml):
+14. Insert the following into the deployment yaml file (replace 
+    `your docker user id` with your docker user id):
 
         apiVersion: apps/v1
         kind: Deployment
@@ -536,8 +538,8 @@ slightly different.
 
         vi deployment_nodeselector.yaml
         
-5. Insert the following into the deployment yaml file (replace **your
-   docker user id** in yaml):
+5. Insert the following into the deployment yaml file (replace 
+   `your docker user id` with your docker user id):
         
         apiVersion: apps/v1
         kind: Deployment
@@ -619,8 +621,8 @@ slightly different.
 
         vi deployment_nodeaffinity.yaml
         
-5. Insert the following into the deployment yaml file (replace **your
-   docker user id** in yaml):
+5. Insert the following into the deployment yaml file (replace 
+   `your docker user id` with your docker user id):
 
         apiVersion: apps/v1
         kind: Deployment
@@ -690,7 +692,7 @@ slightly different.
         kubectl describe pods
        
  
-### Taint Demoonstration
+### Taint Demonstration
  
 Before applying taint on any node, try scheudling an App called busybox based on
 seeded image busybox.
@@ -746,7 +748,7 @@ test-taint-64fc5f64b7-zxsh   1/1     Running   0          19s   10.42.1.8   micr
 A toleration is how a pod declares that it can bypass a taint. It is
 basically a pass that will allow the pod onto any node with any
 taint. Define a deployment yaml file: podToleration.yaml with
-toleration as below. Make sure toeration matches with taint of
+toleration as below. Make sure toleration matches with taint of
 node:microk8s-vm-w1.
 
 ```
