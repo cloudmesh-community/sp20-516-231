@@ -16,7 +16,7 @@ $ curl -X GET "http://localhost:8080/cloudmesh/cache?level" -H "accept: applicat
 $ curl -X GET "http://localhost:8080/cloudmesh/cache?cache" -H "accept: application/json"
 ```
 # web service outputs
-[web service outputs] (https://github.com/cloudmesh-community/sp20-516-231/blob/master/week6-lab/web_service_outputs.png)
+![web service outputs](https://github.com/cloudmesh-community/sp20-516-231/blob/master/week6-lab/web_service_outputs.png)
 
 # python code
 ## cpu.py
@@ -79,10 +79,73 @@ def get_cache_size(level: str='') -> str:
 ```
 ## cpu.yaml
 ```yaml
+openapi: 3.0.2
+info:
+  title: cpuinfo
+  description: A simple service to get cpuinfo as an example of using OpenAPI 3.0
+  license:
+    name: Apache 2.0
+  version: 0.0.1
 
+servers:
+  - url: http://localhost:8080/cloudmesh
+
+paths:
+  /cpu:
+    get:
+      summary: Returns cpu information of the hosting server
+      operationId: cpu.get_processor_name
+      responses:
+        '200':
+          description: cpu info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/cpu"
+  /cache:
+     get:
+       summary: Returns cpu cache size
+       operationId: cpu.get_cache_size
+       parameters:
+         - in: query
+           name: level
+           description: l2 or l3
+           schema:
+             type: "string"
+       responses:
+         '200':
+            description: cache size
+            content:
+              application/json:
+                schema:
+                  type: "object"
+                  additionalProperties: true
+
+components:
+  schemas:
+    cpu:
+      type: "object"
+      required:
+        - "model"
+      properties:
+        model:
+          type: "string"
 ```
 
 ## server.py
 ``` python
+from flask import jsonify
+import connexion
 
+app = connexion.App(__name__, specification_dir="./")
+
+app.add_api("cpu.yaml")
+
+@app.route("/")
+def home():
+    msg = {"msg": "It's working!"}
+    return jsonify(msg)
+
+if __name__ == "__main__":
+    app.run(port=8080, debug=True)
 ```
