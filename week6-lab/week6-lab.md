@@ -16,7 +16,7 @@ $ curl -X GET "http://localhost:8080/cloudmesh/cache?level" -H "accept: applicat
 $ curl -X GET "http://localhost:8080/cloudmesh/cache?cache" -H "accept: application/json"
 ```
 # web service outputs
-![web service outputs](https://github.com/cloudmesh-community/sp20-516-231/blob/master/week6-lab/web_service_outputs.png)
+![web service outputs](https://github.com/cloudmesh-community/sp20-516-231/blob/master/week6-lab/web_service_cropped.png)
 
 # python code
 ## cpu.py
