@@ -1,3 +1,1 @@
-FROM mongo:latest
-
-CMD mongo
+FROM mongo:4.2.6-bionic
