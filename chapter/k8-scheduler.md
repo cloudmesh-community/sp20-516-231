@@ -1,4 +1,6 @@
-# Kubernetes Scheduler sp20-516-231 Brian Kegerreis
+# Kubernetes Scheduler 
+
+Brian Kegerreis, sp20-516-231 
 
 :o2: add bibtex
 
