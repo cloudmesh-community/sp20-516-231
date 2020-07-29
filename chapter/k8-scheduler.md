@@ -2,14 +2,6 @@
 
 Brian Kegerreis, sp20-516-231 
 
-:o2: add bibtex
-
-:o2: heading Description is not needed fix others as you now change section levels
-
-:o2: some empty lines missing
-
-:o2: try to format json example less spacious
-
 ## Description
 
 The Kubernetes Scheduler (`kube-scheduler`) is a component of the Kubernetes Control Plane that assigns newly created Pods to available Nodes. Each Pod has its own requirements, as do the containers within that Pod. In order to assign a given Pod to a Node, `kube-scheduler` first searches the cluster for "feasible" Nodes, calculates scores for each feasible Node, and then assigns the Pod to the Node with the highest score.
@@ -70,30 +62,14 @@ This custom config file specifies certain predicates and weighted priority funct
 ```json
 {
   "predicates": [
-    {
-      "name": "PodFitsHostPorts"
-    },
-    {
-      "name": "PodFitsHost"
-    },
-    {
-      "name": "PodFitsResources"
-    },
-    {
-      "name": "PodMatchNodeSelector"
-    },
-    {
-      "name": "NoDiskConflict"
-    },
-    {
-      "name": "CheckVolumeBinding"
-    },
-    {
-      "name": "CheckNodeCondition"
-    },
-    {
-      "name": "PodToleratesNodeTaints"
-    }
+    {"name": "PodFitsHostPorts"},
+    {"name": "PodFitsHost"},
+    {"name": "PodFitsResources"},
+    {"name": "PodMatchNodeSelector"},
+    {"name": "NoDiskConflict"},
+    {"name": "CheckVolumeBinding"},
+    {"name": "CheckNodeCondition"},
+    {"name": "PodToleratesNodeTaints"}
   ],
   "priorities": [
     {
@@ -123,22 +99,14 @@ $ sudo systemctl restart snap.microk8s.daemon-scheduler.service
 
 `kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from /var/snap/microk8s/current/args/kube-scheduler and restart `kube-scheduler` again.
 
-## Sources
+## References
 
-<https://kubernetes.io/docs/concepts/overview/components/>
-
-<https://kubernetes.io/docs/concepts/configuration/scheduling-framework/>
-
-<https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/>
-
-<https://kubernetes.io/docs/concepts/scheduling/scheduler-perf-tuning/>
-
-<https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/>
-
-<https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/>
-
-<https://developer.ibm.com/technologies/containers/articles/creating-a-custom-kube-scheduler/>
-
-<https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md>
-
-<https://microk8s.io/>
+* <https://kubernetes.io/docs/concepts/overview/components/>
+* <https://kubernetes.io/docs/concepts/configuration/scheduling-framework/>
+* <https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/>
+* <https://kubernetes.io/docs/concepts/scheduling/scheduler-perf-tuning/>
+* <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/>
+* <https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/>
+* <https://developer.ibm.com/technologies/containers/articles/creating-a-custom-kube-scheduler/>
+* <https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md>
+* <https://microk8s.io/>
