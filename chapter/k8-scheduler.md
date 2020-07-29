@@ -97,7 +97,7 @@ Restart `kube-scheduler`.
 $ sudo systemctl restart snap.microk8s.daemon-scheduler.service
 ```
 
-`kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from /var/snap/microk8s/current/args/kube-scheduler and restart `kube-scheduler` again.
+`kube-scheduler` will now use the predicates and priority functions listed in the custom config file. To revert to default scheduler behavior, delete the last line from `/var/snap/microk8s/current/args/kube-scheduler` and restart `kube-scheduler` again.
 
 ## References
 
